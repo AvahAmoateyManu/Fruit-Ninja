@@ -1,0 +1,36 @@
+from tkinter import *
+import random 
+
+root=Tk()
+c=Canvas(root, height=00,width=400,bg='white')
+c.pack()
+
+
+class Bug():
+    def __init__(self,x,y,bug_image):
+        self.x=X
+        self.y=Y
+        self.obj=c.create_image(x,y,image=bug_image)
+        c.tag_bind(self.obj,'<ButtonPress-1>',self.destroy_fly)
+    def destroy_fly(self,event):
+        c.delete(self.obj)
+        print('Got one!')
+    
+
+
+class Fly(Bug):
+    img= PhotoImage(file='C:\\Users\\Lawrence\\Documents\\coding class\\pythonadvance\\small_fly.png')
+    def __init__(self,x,y):
+        super().__init__(x,y,Fly.img)
+
+class LadyBug(Bug):
+    img= PhotoImage(file='C:\\Users\\Lawrence\\Documents\\coding class\\pythonadvance\\small_ladybug.png')
+    def __init__(self,x,y):
+        super().__init__(x,y,LadyBug.img)
+
+
+for i in range(100):
+    Fly(random.randrange(0,400), random.randrange(0,400))
+    LadyBug(random.randrange(0,400),random.randrange(0,400))
+
+root.mainloop()
